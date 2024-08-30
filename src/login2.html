@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body class="h-full bg-gradient-to-r from-cyan-500 to-blue-500">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-24 bg-slate-200 w-96 m-auto rounded-2xl">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h1 class="text-center text-3xl leading-9 tracking-tight text-gray-900">Sign in to your <br>account</h1>
+        </div>
+      
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6" onsubmit="return validateForm()">
+            <div>
+              <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+              <div class="mt-2">
+                <input placeholder="example@company.com" id="email" name="email" type="text" autocomplete="email" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+              <span class="text-red-600 text-sm hidden" id="emailError">Fill it</span>
+            </div>
+      
+            <div>
+              <div class="flex items-center justify-between">
+                <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+              </div>
+              <div class="mt-2">
+                <input placeholder="..........." id="password" name="password" type="password" autocomplete="current-password" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <span id="passwordError" class="text-sm text-red-600 hidden">Fill it</span>
+                <div class="text-sm mt-1 justify-between flex flex-row">
+                  <div>
+                    <input type="checkbox" name="forgoturaccount" id="">
+                    <label for="checkbox">Remember me</label>
+                  </div>
+
+                   <span> <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a></span>
+                
+                </div>
+              </div>
+            </div>
+      
+            <div class="">
+              <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+            </div>
+          </form>
+      
+          <p class="mt-10 text-center text-sm text-gray-500">
+            Don't have an account?
+            <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign up</a>
+          </p>
+        </div>
+      </div>
+
+      <script>
+        function validateForm(){
+          let email = document.getElementById("email").value
+          let password = document.getElementById("password").value
+          let emailError = document.getElementById("emailError")
+          let passwordError = document.getElementById("passwordError")
+
+          let valid = true
+
+          passwordError.classList.add('hidden')
+          
+          if(email=== ''){
+            emailError.textContent= "Empty"
+            emailError.classList.remove('hidden')
+            valid = false
+          }
+          if(password=== ''){
+            passwordError.textContent= "Empty"
+            passwordError.classList.remove('hidden')
+            valid = false
+          } else if(password.length <= 6){
+            passwordError.textContent= "Not enough"
+            passwordError.classList.remove('hidden')
+            valid = false
+
+          }
+          return valid
+        }
+      </script>
+</body>
+</html>
